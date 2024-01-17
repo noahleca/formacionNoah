@@ -9,6 +9,11 @@ table 50100 Example
             DataClassification = ToBeClassified;
 
         }
+        field(2; MyField2; Integer)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'My field 2.';
+        }
     }
 
     keys
@@ -16,6 +21,10 @@ table 50100 Example
         key(Key1; MyField)
         {
             Clustered = true;
+        }
+        key(sk; MyField2)
+        {
+            MaintainSqlIndex = false;
         }
     }
 
