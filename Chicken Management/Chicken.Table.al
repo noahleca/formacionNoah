@@ -1,28 +1,35 @@
 table 50100 Chicken
 {
-    DataClassification = ToBeClassified;
+    Caption = 'Chicken';
+    DataClassification = CustomerContent;
 
     fields
     {
         field(1; no; Code[20])
         {
+            DataClassification = CustomerContent;
             Caption = 'No.';
         }
         field(2; description; Text[100])
         {
+            DataClassification = CustomerContent;
             Caption = 'Chicken description.';
         }
         field(3; chickenTypeCode; Code[20])
         {
-            Caption = ' Chicken type code.';
+            DataClassification = CustomerContent;
             TableRelation = "ChickenType";
+            Caption = ' Chicken type code.';
         }
         field(4; lastDateModified; Date)
         {
+            DataClassification = CustomerContent;
             Caption = 'Last date modified.';
+            Editable = false;
         }
         field(5; picture; MediaSet)
         {
+            DataClassification = CustomerContent;
             Caption = 'Picture.';
         }
     }
@@ -37,35 +44,11 @@ table 50100 Chicken
 
     fieldgroups
     {
-        fieldgroup(DropDown; "no", description, chickenTypeCode)
+        fieldgroup(DropDown; description, chickenTypeCode)
         {
         }
-        fieldgroup(Brick; "no", description, picture)
+        fieldgroup(Brick; description, picture)
         {
         }
     }
-
-    var
-        myInt: Integer;
-
-    trigger OnInsert()
-    begin
-
-    end;
-
-    trigger OnModify()
-    begin
-
-    end;
-
-    trigger OnDelete()
-    begin
-
-    end;
-
-    trigger OnRename()
-    begin
-
-    end;
-
 }

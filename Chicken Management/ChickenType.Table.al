@@ -1,15 +1,20 @@
 table 50101 ChickenType
 {
-    DataClassification = ToBeClassified;
+    Caption = 'Chicken Type';
+    DrillDownPageId = "Chicken Types";
+    LookupPageId = "Chicken Types";
+    DataClassification = CustomerContent;
 
     fields
     {
         field(1; code; Code[20])
         {
+            DataClassification = CustomerContent;
             Caption = 'Code.';
         }
         field(2; description; Text[100])
         {
+            DataClassification = CustomerContent;
             Caption = 'Description.';
         }
     }
@@ -21,32 +26,4 @@ table 50101 ChickenType
             Clustered = true;
         }
     }
-
-    fieldgroups
-    {
-    }
-
-    var
-        myInt: Integer;
-
-    trigger OnInsert()
-    begin
-
-    end;
-
-    trigger OnModify()
-    begin
-
-    end;
-
-    trigger OnDelete()
-    begin
-
-    end;
-
-    trigger OnRename()
-    begin
-
-    end;
-
 }
