@@ -19,7 +19,19 @@ table 50100 Chicken
         {
             DataClassification = CustomerContent;
             TableRelation = "ChickenType";
-            Caption = ' Chicken type code.';
+            Caption = 'Chicken type code.';
+            trigger OnValidate()
+            begin
+                CalcFields(chickenTypeDescription)
+            end;
+        }
+        field(6; chickenTypeDescription; Text[100])
+        {
+            FieldClass = FlowField;
+            Editable = false;
+            CalcFormula = lookup(ChickenType.description);
+            TableRelation = "ChickenType";
+            Caption = 'Chicken type description.';
         }
         field(4; lastDateModified; Date)
         {

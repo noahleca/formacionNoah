@@ -23,6 +23,10 @@ page 50101 ChickenList
                 {
                     ToolTip = 'Specifies the value of the  Chicken type code. field.';
                 }
+                field(chickenTypeDescription; Rec.chickenTypeDescription)
+                {
+                    ToolTip = 'Specifies the value of the Chicken type description. field.';
+                }
             }
         }
     }

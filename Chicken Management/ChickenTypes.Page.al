@@ -19,6 +19,10 @@ page 50102 "Chicken Types"
                 {
                     ToolTip = 'Specifies the value of the SystemCreatedAt field.';
                 }
+                field(description; Rec.description)
+                {
+                    ToolTip = 'Specifies the value of the Description. field.';
+                }
             }
         }
     }

@@ -31,6 +31,10 @@ page 50100 "Chicken Card"
                 {
                     ToolTip = 'Specifies the value of the Picture. field.';
                 }
+                field(chickenTypeDescription; Rec.chickenTypeDescription)
+                {
+                    ToolTip = 'Specifies the value of the Chicken type description. field.';
+                }
             }
         }
     }
