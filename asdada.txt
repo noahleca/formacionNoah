@@ -1,0 +1,16 @@
+    +--------------+        +-----------------+        +------------------+        +--------------+        +-------------+
+    |   Chicken    |        | DocumentHeader  |        |  DocumentLine    |        | ChickenType  |        |  EggType    |
+    +--------------+        +-----------------+        +------------------+        +--------------+        +-------------+
+    | ChickenID (PK)| <----  | DocumentID (PK) | <----  | LineID (PK)      |        | ChickenTypeID|        | EggTypeID   |
+    | ChickenName   |        | Date            |        | DocumentID (FK)  |        | ChickenTypeName|       | EggTypeName |
+    | ChickenTypeID |        | ChickenNumber   |        | EggQuantity      |        +--------------+        +-------------+
+    +--------------+        +-----------------+        +------------------+
+          |
+          |  +-------------------------+
+          |  |
+          +--> Relationship: ChickenTypeID (FK) references ChickenTypeID in ChickenType
+
+          |
+          |  +---------------------+
+          |  |
+          +--> Relationship: EggTypeID (FK) references EggTypeID in EggType
