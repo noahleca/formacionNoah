@@ -2,7 +2,7 @@ table 50104 "Egg Production Line"
 {
     Caption = 'Egg Production Line.';
     DataClassification = CustomerContent;
-
+    DrillDownPageId = "Egg Production Line Page";
     fields
     {
         field(1; "Document No."; Code[20])
