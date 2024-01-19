@@ -44,6 +44,13 @@ table 50100 Chicken
             DataClassification = CustomerContent;
             Caption = 'Picture.';
         }
+        field(7; "Number of Egg Produced"; Decimal)
+        {
+            Caption = 'Number of Egg Produced.';
+            FieldClass = FlowField;
+            CalcFormula = sum("Egg Production Line".Quantity);
+            Editable = false;
+        }
     }
 
     keys
