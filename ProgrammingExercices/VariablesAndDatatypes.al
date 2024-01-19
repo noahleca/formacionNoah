@@ -13,7 +13,7 @@ codeunit 55100 VariablesAndDatatypes
         LoopNoDec: Decimal;
 }
 
-pageextension 55101 "Customers Extension" extends "Customer List"
+/*pageextension 55101 "Customers Extension" extends "Customer List"
 {
     actions
     {
@@ -36,4 +36,4 @@ pageextension 55101 "Customers Extension" extends "Customer List"
             }
         }
     }
-}
+}*/
