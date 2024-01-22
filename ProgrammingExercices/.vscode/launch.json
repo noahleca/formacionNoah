@@ -9,7 +9,7 @@
             "server": "http://gretaylia",
             "serverInstance": "BC",
             "authentication": "UserPassword",
-            "startupObjectId": 55101,
+            "startupObjectId": 55103,
             "startupObjectType": "Page",
             "breakOnError": "All",
             "launchBrowser": true,

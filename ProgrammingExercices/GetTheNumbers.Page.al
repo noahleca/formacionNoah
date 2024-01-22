@@ -11,9 +11,12 @@ page 55102 "Get the numbers"
         {
             group(Input)
             {
+                Caption = 'Input';
                 field(textEntrada; textEntrada)
                 {
                     ApplicationArea = All;
+                    Caption = 'Input';
+                    ToolTip = 'Input';
                 }
             }
             group(Output)
@@ -21,6 +24,8 @@ page 55102 "Get the numbers"
                 field(textSalida; textSalida)
                 {
                     ApplicationArea = All;
+                    Caption = 'Output';
+                    ToolTip = 'Output';
                 }
             }
         }
@@ -33,18 +38,27 @@ page 55102 "Get the numbers"
             action(Execute)
             {
                 ApplicationArea = All;
+                Caption = 'Get the numbers';
+                ToolTip = 'Get the numbers';
+                Promoted = true;
+                PromotedIsBig = true;
+                Image = Action;
 
                 trigger OnAction()
                 begin
-                    length := StrLen(textEntrada);
-                    for curr := 1 to length do
-                        ;
+                    Clear(textSalida);
+                    for length := 1 to StrLen(textEntrada) do begin
+                        temp := CopyStr(textEntrada, length, 1);
+                        if temp in ['0' .. '9'] then
+                            textSalida += temp;
+                    end;
+                    textSalida := textSalida;
                 end;
             }
         }
     }
 
     var
-        textEntrada, textSalida, numeros : text;
-        length, curr : integer;
+        textEntrada, textSalida, temp : text;
+        length: integer;
 }

@@ -1,0 +1,6 @@
+nPotencia
+nLista
+
+// Sacar la potencia
+
+// Sacar la cantidad de Armstrong N.
