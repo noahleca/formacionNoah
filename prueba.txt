@@ -1,0 +1,76 @@
+page 55103 "Armstrong Numbers"
+{
+    PageType = Card;
+    ApplicationArea = All;
+    UsageCategory = Administration;
+
+    layout
+    {
+        area(Content)
+        {
+            repeater(Group)
+            {
+                field(Number; 'Number'; Integer)
+                {
+                    ApplicationArea = All;
+                }
+            }
+        }
+    }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(GetNumbers)
+            {
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Clear(Number); // Limpiar los números anteriores
+
+                    // Loop desde 1 hasta 10000
+                    for i := 1 to 10000 do begin
+                        numeroActual := Format(i);
+                        longitudNumero := StrLen(numeroActual);
+                        potencia := 0;
+
+                        // Calcular la potencia de cada dígito
+                        for j := 1 to longitudNumero do begin
+                            texto := CopyStr(numeroActual, j, 1);
+                            Evaluate(digito, texto);
+                            potenciaTemp := Power(digito, longitudNumero);
+                            potencia := potencia + potenciaTemp;
+                        end;
+
+                        // Verificar si es un número de Armstrong
+                        if (potencia = i) then begin
+                            Insert(true, Number);
+                            Modify;
+                        end;
+                    end;
+                end;
+            }
+        }
+    }
+
+    var
+        numeroActual, texto: Text;
+        i, j, longitudNumero, digito, potenciaTemp: Integer;
+        potencia: Decimal;
+        Number: Record "Armstrong Number";
+}
+
+table 55104 "Armstrong Number"
+{
+    DataClassification = ToBeClassified;
+    fields
+    {
+        field(Number; "Number" )
+        {
+            ApplicationArea = All;
+            DataClassification = ToBeClassified;
+        }
+    }
+}
