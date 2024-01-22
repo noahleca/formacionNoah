@@ -21,16 +21,27 @@ page 55103 "Armstrong Numbers"
 
                 trigger OnAction()
                 begin
+
                     //Loop from 1 to 10000
-                    for i := 20 to 22 do begin
-                        temp := CopyStr(format(i), 1);
-                        power := RIGHT(temp, 1);
-                        //ok := Evaluate(i, temp.TrimStart());
+                    for i := 153 to 154 do begin
+                        //Get the Power from the loopNumber
+                        numeroActual := Format(i);
+                        longitudNumero := StrLen(numeroActual);
+                        stringPotencia := CopyStr(numeroActual, longitudNumero, 1);
+                        Evaluate(potencia, stringPotencia);
+                        //Loop over every digit of the loopNumber
+                        for j := 1 to longitudNumero do begin
+                            //Get the digits
+                            texto := CopyStr(numeroActual, j, 1);
+                            Evaluate(digito, texto);
+                            potenciaTemp := Power(digito, potencia);
+                            Message('dígito para j=%1: %2', j, potenciaTemp);
+                        end;
                     end;
-                    Message("power");
-                    //Get the Power from the loopNumber
-                    //Loop over every digit of the loopNumber
-                    //Get the digit
+                    //Message('Último dígito para i=%1: %2', i, stringPotencia);
+
+
+
                     //Calculate it's Power
                     //Add the power to the temp result
                     //Compare the temp with the original number, and if the same then remember
@@ -40,7 +51,9 @@ page 55103 "Armstrong Numbers"
         }
     }
     var
-        temp, power : text;
-        i: integer;
-        ok: Boolean;
+        numeroActual, stringPotencia, texto : text;
+        i, j, longitudNumero, digito, potenciaTemp : integer;
+        potencia: decimal;
+        // --
+        temp: text;
 }
