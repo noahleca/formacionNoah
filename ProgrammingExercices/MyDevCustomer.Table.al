@@ -42,8 +42,13 @@ page 55109 "MyDevCustomer List"
     {
         area(Content)
         {
-            repeater(GroupName)
+            group(Entrada)
             {
+                field(TextEntrada; entrada)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Entrada';
+                }
             }
         }
     }
@@ -52,15 +57,53 @@ page 55109 "MyDevCustomer List"
     {
         area(Processing)
         {
-            action(ActionName)
+            action(CopyFromCustomer)
             {
                 ApplicationArea = All;
-
+                Caption = 'Copy from customer';
+                ToolTip = 'Copy from customer';
                 trigger OnAction();
+                var
+                    CustomerRec: Record Customer;
+                    FilteredCustomerRec: Record MyDevCustomer;
                 begin
+                    if STRPOS(entrada, '*') = 0 then begin
+                        Error('El parametro de busqueda debe contener el caracter: *.');
+                    end;
+                    CustomerRec.Reset;
+                    FilteredCustomerRec.Reset();
+                    FilteredCustomerRec.SetRange("Ciudad", entrada);
 
+                    while CustomerRec.FindSet() do begin
+                        FilteredCustomerRec.SetRange("Ciudad", '%' + entrada + '%');
+                        if not FilteredCustomerRec.Find('-') then begin
+                            FilteredCustomerRec.Init();
+                            FilteredCustomerRec."No." := CustomerRec."No.";
+                            FilteredCustomerRec.Nombre := CustomerRec.Name;
+                            FilteredCustomerRec.Ciudad := CustomerRec.City;
+                            FilteredCustomerRec.Insert(true);
+                        end;
+                    end;
+                    Update(true);
+                end;
+            }
+            action(EmptyTable)
+            {
+                ApplicationArea = All;
+                Caption = 'Empty table';
+                ToolTip = 'Empty table';
+                trigger OnAction()
+                var
+                    MyDevCustomerRec: Record MyDevCustomer;
+                begin
+                    MyDevCustomerRec.Reset();
+                    MyDevCustomerRec.DeleteAll();
+
+                    Update(true);
                 end;
             }
         }
     }
+    var
+        entrada: Text;
 }
