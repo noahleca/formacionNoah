@@ -47,8 +47,8 @@ page 55102 "Get the numbers"
                 trigger OnAction()
                 begin
                     Clear(textSalida);
-                    for length := 1 to StrLen(textEntrada) do begin
-                        temp := CopyStr(textEntrada, length, 1);
+                    for longitud := 1 to StrLen(textEntrada) do begin
+                        temp := CopyStr(textEntrada, longitud, 1);
                         if temp in ['0' .. '9'] then
                             textSalida += temp;
                     end;
@@ -60,5 +60,5 @@ page 55102 "Get the numbers"
 
     var
         textEntrada, textSalida, temp : text;
-        length: integer;
+        longitud: integer;
 }

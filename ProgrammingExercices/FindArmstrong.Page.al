@@ -8,9 +8,9 @@ page 55103 "Armstrong Numbers"
     {
         area(Content)
         {
+
         }
     }
-
     actions
     {
         area(Processing)
@@ -21,39 +21,45 @@ page 55103 "Armstrong Numbers"
 
                 trigger OnAction()
                 begin
-
+                    recuentoArmstrong := 0;
                     //Loop from 1 to 10000
-                    for i := 153 to 154 do begin
+                    for i := 1 to 10000 do begin
                         //Get the Power from the loopNumber
                         numeroActual := Format(i);
                         longitudNumero := StrLen(numeroActual);
-                        stringPotencia := CopyStr(numeroActual, longitudNumero, 1);
-                        Evaluate(potencia, stringPotencia);
+                        potencia := 0;
                         //Loop over every digit of the loopNumber
                         for j := 1 to longitudNumero do begin
                             //Get the digits
                             texto := CopyStr(numeroActual, j, 1);
                             Evaluate(digito, texto);
-                            potenciaTemp := Power(digito, potencia);
-                            Message('dígito para j=%1: %2', j, potenciaTemp);
+                            potenciaTemp := Power(digito, longitudNumero);
+                            potencia := potencia + potenciaTemp;
                         end;
+                        if potencia = i then begin
+                            recuentoArmstrong += 1;
+                        end
                     end;
-                    //Message('Último dígito para i=%1: %2', i, stringPotencia);
-
-
-
-                    //Calculate it's Power
-                    //Add the power to the temp result
-                    //Compare the temp with the original number, and if the same then remember
-                    //Message the result
+                    Message('Numeros Armstrong totales: %1', recuentoArmstrong);
                 end;
             }
         }
     }
     var
-        numeroActual, stringPotencia, texto : text;
-        i, j, longitudNumero, digito, potenciaTemp : integer;
-        potencia: decimal;
-        // --
-        temp: text;
+        numeroActual, texto : Text;
+        i, j, longitudNumero, digito, potenciaTemp, recuentoArmstrong : Integer;
+        potencia: Decimal;
+        Number: Record "Armstrong Number";
+}
+
+table 55104 "Armstrong Number"
+{
+    DataClassification = ToBeClassified;
+    fields
+    {
+        field(1; Number; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
+    }
 }
