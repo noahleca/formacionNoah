@@ -26,4 +26,13 @@ table 50102 EggType
             Clustered = true;
         }
     }
+    procedure InsertEggType(EggTypeCode: Code[20]; EggTypeDescription: Text[50])
+    var
+        EggType: Record EggType;
+    begin
+        Clear(EggType);
+        EggType.code := EggTypeCode;
+        EggType.description := EggTypeDescription;
+        EggType.Insert();
+    end;
 }

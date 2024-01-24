@@ -87,4 +87,16 @@ table 50100 Chicken
         {
         }
     }
+
+    trigger OnDelete()
+    var
+        EggProductionLine: Record "Egg Production Line";
+        ChickenHasEggsErr: Label 'The Chicken %1 %2 has eggs, you can''t detele it.', Comment = '%1 = no ; %2 = description';
+    begin
+        Clear(EggProductionLine);
+        EggProductionLine.SetRange("Chicken No.", Rec.no);
+
+        if not EggProductionLine.IsEmpty() then
+            Error('No se puede borrar el pollo porque está en la linea de producción de huevos.');
+    end;
 }

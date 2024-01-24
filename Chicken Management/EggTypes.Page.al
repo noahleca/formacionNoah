@@ -22,4 +22,30 @@ page 50103 "Egg Types"
             }
         }
     }
+
+    actions
+    {
+        area(Creation)
+        {
+            action(InsertDefaultEggTypes)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Insert default egg types.';
+                Image = Add;
+                trigger OnAction()
+                var
+                    EggType: Record EggType;
+                    EggTypeNotEmptyErr: Label 'There are already Egg Types in the table.';
+                begin
+                    if EggType.IsEmpty then begin
+                        EggType.InsertEggType('EGG002', 'Egg type 2.');
+                        EggType.InsertEggType('EGG003', 'Egg type 3.');
+                        EggType.InsertEggType('EGG004', 'Egg type 4.');
+                    end
+                    else
+                        Error(EggTypeNotEmptyErr);
+                end;
+            }
+        }
+    }
 }

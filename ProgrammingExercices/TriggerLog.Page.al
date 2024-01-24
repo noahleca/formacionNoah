@@ -1,60 +1,55 @@
-page 55111 "TriggerLog List"
+page 55111 "Trigger Log List"
 {
-    PageType = ListPlus;
     ApplicationArea = All;
-    UsageCategory = Administration;
+    Caption = 'Trigger Log List';
+    PageType = List;
     SourceTable = TriggerLog;
+    UsageCategory = Lists;
+    Editable = false;
 
     layout
     {
         area(Content)
         {
-            group(GroupName2)
+            repeater(General)
             {
-                field("Entrada Entry No."; Rec."Entry No.")
-                {
-                    Caption = 'Entrada Entry No.';
-                    ApplicationArea = All;
-                }
-                field("Entrada Object Name"; Rec."Object Name")
-                {
-                    Caption = 'Entrada Object Name';
-                    ApplicationArea = All;
-                }
-                field("Entrada Trigger Name"; Rec."Trigger Name")
-                {
-                    Caption = 'Entrada Trigger Name';
-                    ApplicationArea = All;
-                }
-                field("Entrada Time"; Rec.Time)
-                {
-                    Caption = 'Entrada Time';
-                    ApplicationArea = All;
-                }
-            }
-            repeater(GroupName)
-            {
-                Editable = false;
                 field("Entry No."; Rec."Entry No.")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Entry No.';
                 }
                 field("Object Name"; Rec."Object Name")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Object Name';
                 }
                 field("Trigger Name"; Rec."Trigger Name")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Trigger Name';
                 }
                 field(Time; Rec.Time)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Time';
                 }
+            }
+        }
+    }
+    actions
+    {
+        area(Navigation)
+        {
+            action(DeleteLogEntries)
+            {
+                ApplicationArea = All;
+                Caption = 'Delete Log Entries';
+                ToolTip = 'Deletes all log entries.';
+                Image = ClearLog;
+                Promoted = true;
+
+                trigger OnAction()
+                var
+                    TriggerLog: Record TriggerLog;
+                begin
+                    TriggerLog.ClearLogEntries();
+                end;
             }
         }
     }
