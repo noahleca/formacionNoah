@@ -34,32 +34,31 @@ table 55100 TriggerLog
             Clustered = true;
         }
     }
-    local procedure InsertLogEntry(ObjectName: Text[100]; TriggerName: Text[100])
+    procedure InsertLogEntry(ObjectName: Text[100]; TriggerName: Text[100])
     var
         TriggerLog: Record TriggerLog;
         EntryNo: Integer;
     begin
-        TriggerLog.FindSet();
-        repeat
-            if TriggerLog.Next() = 0 then
-                EntryNo := (TriggerLog."Entry No." + 1);
-        until TriggerLog.Next() = 0;
-
-        if TriggerLog.Get(TriggerLog."Entry No.") then exit;
+        Clear(TriggerLog);
+        Clear(EntryNo);
+        if TriggerLog.FindLast() then
+            EntryNo := TriggerLog."Entry No." + 1
+        else
+            EntryNo := 1;
+        Clear(TriggerLog);
         TriggerLog."Entry No." := EntryNo;
         TriggerLog."Object Name" := ObjectName;
         TriggerLog."Trigger Name" := TriggerName;
         TriggerLog.Time := CurrentDateTime;
-        TriggerLog.Insert();
     end;
 
-    procedure ClearLogEntries(ObjectName: Text[100]; TriggerName: Text[100])
+    procedure ClearLogEntries()
     var
         TriggerLog: Record TriggerLog;
     begin
         TriggerLog.FindSet();
-        if TriggerLog.Next() = 0 then
-            Clear(TriggerLog);
-        TriggerLog.DeleteAll();
+        if not TriggerLog.IsEmpty() then
+            if Confirm('Estas seguro de que quieres eliminar todos los registros de triggers?') then
+                TriggerLog.DeleteAll();
     end;
 }
