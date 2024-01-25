@@ -39,7 +39,7 @@ page 50108 "Chicken Management Rolecenter"
                 {
                     Caption = 'Chicken types.';
                     ApplicationArea = All;
-                    RunObject = Page "Chicken Types";
+                    RunObject = Page "Chicken Types List";
                 }
             }
             group(Documents)
@@ -72,7 +72,7 @@ page 50108 "Chicken Management Rolecenter"
             {
                 Caption = 'eChicken types.';
                 ApplicationArea = All;
-                RunObject = Page "Chicken Types";
+                RunObject = Page "Chicken Types List";
             }
             action(eEggProduction)
             {

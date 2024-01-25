@@ -50,6 +50,8 @@ table 55100 TriggerLog
         TriggerLog."Object Name" := ObjectName;
         TriggerLog."Trigger Name" := TriggerName;
         TriggerLog.Time := CurrentDateTime;
+
+        TriggerLog.Insert();
     end;
 
     procedure ClearLogEntries()

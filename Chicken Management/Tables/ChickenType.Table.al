@@ -1,8 +1,8 @@
 table 50101 ChickenType
 {
     Caption = 'Chicken Type';
-    DrillDownPageId = "Chicken Types";
-    LookupPageId = "Chicken Types";
+    DrillDownPageId = "Chicken Types List";
+    LookupPageId = "Chicken Types List";
     DataClassification = CustomerContent;
 
     fields
