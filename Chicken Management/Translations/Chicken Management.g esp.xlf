@@ -5,6 +5,7 @@
       <group id="body">
         <trans-unit id="Table 1287095955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Chicken</source>
+          <target>Pollo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Chicken - Property Caption</note>
         </trans-unit>
