@@ -2,7 +2,7 @@
   "id": "bd5c4503-460e-4039-885b-2101c7257a31",
   "name": "Chicken Management",
   "publisher": "Noah Lecegui",
-  "version": "1.0.0.0",
+  "version": "1.0.0.1",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -27,6 +27,7 @@
   },
   "runtime": "12.0",
   "features": [
-    "NoImplicitWith"
+    "NoImplicitWith",
+    "TranslationFile"
   ]
 }
