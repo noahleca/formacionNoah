@@ -19,5 +19,20 @@
             "tenant": "default",
             "usePublicURLFromServer": true
         }
+        ,
+        {
+            "type": "al",
+            "request": "launch",
+            "name": "SandboxDev",
+            "startupObjectId": 22,
+            "startupObjectType": "Page",
+            "breakOnError": "All",
+            "launchBrowser": true,
+            "enableLongRunningSqlStatements": true,
+            "enableSqlInformationDebugger": true,
+            "tenant": "default",
+            "environmentName": "Sandbox",
+            "environmentType": "Sandbox"
+        }
     ]
 }
