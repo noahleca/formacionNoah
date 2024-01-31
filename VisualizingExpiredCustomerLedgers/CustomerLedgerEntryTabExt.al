@@ -1,20 +1,12 @@
 tableextension 50100 "Cust. Ledger Table Extension" extends "Cust. Ledger Entry"
 {
-    procedure GetNumberOfDaysExpired(CustomerLedgerEntry: Record "Cust. Ledger Entry"): Integer
+    procedure GetNumberOfDaysExpired(): Integer
     var
-        Today: Date;
-        DaysExpired: Integer;
+        NumberOfDays: Integer;
     begin
-        Today := TODAY;
-        if CustomerLedgerEntry."Due Date" < Today then begin
-            DaysExpired := Abs(Today - CustomerLedgerEntry."Due Date");
-            exit(DaysExpired);
-        end
-        else begin
+        if Today() <= "Due Date" then
             exit(0);
-        end;
+        NumberOfDays := "Due Date" - Today();
+        exit(Abs(NumberOfDays));
     end;
-
-    var
-        myInt: Integer;
 }
