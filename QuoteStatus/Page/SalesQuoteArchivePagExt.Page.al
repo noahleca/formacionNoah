@@ -7,31 +7,26 @@ pageextension 50101 "Sales Quote Archive Extension" extends "Sales Quote Archive
             field("Won/Lost Quote Status"; "Won/Lost Quote Status")
             {
                 ApplicationArea = All;
-                Caption = 'Won/Lost Quote Status';
                 ToolTip = 'Won/Lost Quote Status';
             }
             field("Won/Lost Date"; "Won/Lost Date")
             {
                 ApplicationArea = All;
-                Caption = 'Won/Lost Date';
                 ToolTip = 'Won/Lost Date';
             }
             field("Won/Lost Reason Code"; "Won/Lost Reason Code")
             {
                 ApplicationArea = All;
-                Caption = 'Won/Lost Reason Code';
                 ToolTip = 'Won/Lost Reason Code';
             }
             field("Won/Lost Reason Desc."; "Won/Lost Reason Desc.")
             {
                 ApplicationArea = All;
-                Caption = 'Won/Lost Reason Desc.';
                 ToolTip = 'Won/Lost Reason Desc.';
             }
             field("Won/Lost Remarks"; "Won/Lost Remarks")
             {
                 ApplicationArea = All;
-                Caption = 'Won/Lost Remarks';
                 ToolTip = 'Won/Lost Remarks';
             }
         }
