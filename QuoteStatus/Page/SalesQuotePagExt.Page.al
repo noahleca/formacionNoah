@@ -36,7 +36,30 @@ pageextension 50100 "Sales Quote Extension" extends "Sales Quote"
             }
         }
     }
+    actions
+    {
+        addfirst(Create)
+        {
+            action(CloseQuote)
+            {
+                ApplicationArea = All;
+                Caption = '&Close Quote';
+                Image = Close;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ToolTip = 'Closes the sales quote and archives.';
 
+                trigger OnAction()
+                var
+                    QuoteStatusMgmt: Codeunit "SOL Quote Status Mgmt";
+                begin
+                    if Page.RunModal(Page::"Close Quote", Rec) = Action::LookupOK then
+                        QuoteStatusMgmt.CloseQuote(Rec);
+                end;
+            }
+        }
+    }
     var
         "Won/Lost Quote Status": Enum "Won/Lost Status";
         "Won/Lost Date": DateTime;
