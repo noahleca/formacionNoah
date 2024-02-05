@@ -7,71 +7,34 @@ pageextension 50102 "Sales Quote Archives Extension" extends "Sales Quote Archiv
             field("Won/Lost Quote Status"; "Won/Lost Quote Status")
             {
                 ApplicationArea = All;
-                Editable = false;
+                Caption = 'Won/Lost Quote Status';
                 ToolTip = 'Won/Lost Quote Status';
             }
             field("Won/Lost Date"; "Won/Lost Date")
             {
                 ApplicationArea = All;
-                Editable = false;
+                Caption = 'Won/Lost Date';
                 ToolTip = 'Won/Lost Date';
             }
             field("Won/Lost Reason Code"; "Won/Lost Reason Code")
             {
                 ApplicationArea = All;
-                Editable = false;
+                Caption = 'Won/Lost Reason Code';
                 ToolTip = 'Won/Lost Reason Code';
             }
             field("Won/Lost Reason Desc."; "Won/Lost Reason Desc.")
             {
                 ApplicationArea = All;
-                Editable = false;
+                Caption = 'Won/Lost Reason Desc.';
                 ToolTip = 'Won/Lost Reason Desc.';
             }
             field("Won/Lost Remarks"; "Won/Lost Remarks")
             {
                 ApplicationArea = All;
-                Editable = false;
+                Caption = 'Won/Lost Remarks';
                 ToolTip = 'Won/Lost Remarks';
             }
         }
-    }   
-        keys
-        {
-            key(Key1; MyField)
-            {
-                Clustered = true;
-            }
-        }
-        
-        fieldgroups
-        {
-            // Add changes to field groups here
-        }
-        
-        var
-            myInt: Integer;
-        
-        trigger OnInsert()
-        begin
-            
-        end;
-        
-        trigger OnModify()
-        begin
-            
-        end;
-        
-        trigger OnDelete()
-        begin
-            
-        end;
-        
-        trigger OnRename()
-        begin
-            
-        end;
-        
     }
 
     var
