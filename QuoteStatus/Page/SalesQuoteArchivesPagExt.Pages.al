@@ -1,4 +1,4 @@
-pageextension 50102 "Sales Quote Archives Extension" extends "Sales Quote Archives"
+pageextension 50052 "Sales Quote Archives Extension" extends "Sales Quote Archives"
 {
     layout
     {

@@ -1,4 +1,4 @@
-enum 50101 "Won/Lost Status"
+enum 50050 "Won/Lost Status"
 {
     Extensible = true;
     value(0; "In Progress")

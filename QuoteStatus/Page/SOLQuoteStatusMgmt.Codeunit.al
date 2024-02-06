@@ -1,4 +1,4 @@
-codeunit 50100 "SOL Quote Status Mgmt"
+codeunit 50057 "SOL Quote Status Mgmt"
 {
     procedure GetSalespersonForLoggedInUser(): Code[20]
     var

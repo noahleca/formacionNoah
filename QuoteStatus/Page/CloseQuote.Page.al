@@ -1,4 +1,4 @@
-page 50100 "Close Quote"
+page 50050 "Close Quote"
 {
     Caption = 'Close Quote';
     DeleteAllowed = false;

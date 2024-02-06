@@ -1,4 +1,4 @@
-pageextension 50104 "SOL Business Manager RC Ext" extends "Business Manager Role Center"
+pageextension 50056 "SOL Business Manager RC Ext" extends "Business Manager Role Center"
 {
     layout
     {

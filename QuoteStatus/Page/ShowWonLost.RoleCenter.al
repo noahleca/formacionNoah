@@ -1,4 +1,4 @@
-page 50101 "Show Won/Lost Quotes"
+page 50055 "Show Won/Lost Quotes"
 {
     PageType = ListPart;
     SourceTable = "Sales Header";
