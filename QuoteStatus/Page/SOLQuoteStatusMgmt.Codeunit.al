@@ -1,5 +1,19 @@
 codeunit 50100 "SOL Quote Status Mgmt"
 {
+    procedure GetSalespersonForLoggedInUser(): Code[20]
+    var
+        Salesperson: Record "Salesperson/Purchaser";
+        User: Record User;
+    begin
+        User.Reset();
+        if not User.Get(UserSecurityId()) then exit('');
+        if User."Contact Email".Trim() = '' then exit('');
+        Salesperson.Reset();
+        Salesperson.SetRange("E-Mail", User."Contact Email");
+        if Salesperson.FindFirst() then
+            exit(Salesperson.Code);
+    end;
+
     procedure CloseQuote(var SalesHeader: Record "Sales Header")
     begin
         ArchiveSalesQuote(SalesHeader);
