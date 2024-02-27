@@ -1,2 +1,5 @@
 /VisualizingExpiredCustomerLedgers/.vscode/*.json
 *.app
+CustomerGrading/
+DominoCS/
+Reporting/
