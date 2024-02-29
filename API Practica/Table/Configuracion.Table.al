@@ -16,4 +16,12 @@ table 50102 "Configuracion Table"
             DataClassification = CustomerContent;
         }
     }
+    procedure InsertConfiguracion(URL: Text[100])
+    var
+        Configuracion: Record "Configuracion Table";
+    begin
+        Clear(Configuracion);
+        Configuracion."API REST Base URL" := URL;
+        Configuracion.Insert();
+    end;
 }
