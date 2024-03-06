@@ -3,7 +3,18 @@ codeunit 50110 "Send Updates"
     [EventSubscriber(ObjectType::Table, Database::"User MGS Table", 'OnAfterModifyEvent', '', false, false)]
     local procedure MyProcedure()
     begin
+        CreateJSONUser(Rec, 'https://localhost:44389/api/users', 'Put')
+    end;
 
+    procedure FirstGet(URL: Text)
+    var
+        Users: Record "User MGS Table";
+        HttpClient: HttpClient;
+        HttpResponseMessage: HttpResponseMessage;
+        JsonObject: JsonObject;
+    begin
+        Clear(Users);
+        
     end;
 
     procedure CreateJSONUser(User: Record "User MGS Table"; URL: Text; RequestType: Text; jsonText: Text) ReturnValue: Text
