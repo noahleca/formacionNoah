@@ -1,46 +1,12 @@
-codeunit 50100 "Send Updates"
+codeunit 50110 "Send Updates"
 {
-    local procedure CreateJSON(User: Record User)
-    var 
-        CustObject: JsonObject;
-        JsonObject: JsonObject;
-        JsonText: Text;
+    [EventSubscriber(ObjectType::Table, Database::"User MGS Table", 'OnAfterModifyEvent', '', false, false)]
+    local procedure MyProcedure()
     begin
-        Clear(JsonObject);
-        Clear(CustObject);
 
-        CustObject.Add('User Security ID', User."User Security ID");
-        CustObject.Add('User Name', User."User Name");
-        CustObject.Add('Full Name', User."Full Name");
-        CustObject.Add('State', User.State);
-        CustObject.Add('Windows Security ID', User."Windows Security ID");
-        CustObject.Add('License Type', User."License Type");
-        CustObject.Add('Authentication Email', User."Authentication Email");
-
-        JsonObject.Add('CustObject', CustObject);
-        JsonObject.WriteTo(JsonText);
-    end;
-    procedure GetUser(UserSecurityID: Text): Text;
-    var
-        User: Record User;
-        JObject: JsonObject;
-        JsonText: Text;
-    begin
-        if not User.Get(UserSecurityID) then
-            Error('User not found');
-        JObject.Add('User Security ID', User."User Security ID");
-        JObject.Add('User Name', User."User Name");
-        JObject.Add('Full Name', User."Full Name");
-        JObject.Add('State', User.State);
-        JObject.Add('Windows Security ID', User."Windows Security ID");
-        JObject.Add('License Type', User."License Type");
-        JObject.Add('Authentication Email', User."Authentication Email");
-        if not JObject.WriteTo(JsonText) then
-            Error('Error while converting to JSON');
-        exit(JsonText);
     end;
 
-    procedure CreateJSONUser(User: Record User; URL: Text; RequestType: Text; jsonText: Text) ReturnValue: Text
+    procedure CreateJSONUser(User: Record "User MGS Table"; URL: Text; RequestType: Text; jsonText: Text) ReturnValue: Text
     var
         HttpClient: HttpClient;
         HttpHeaders: HttpHeaders;
@@ -59,13 +25,10 @@ codeunit 50100 "Send Updates"
                 end;
             'Put':
                 begin
-                    HeaderJsonObject.Add('User Security ID', User."User Security ID");
-                    HeaderJsonObject.Add('User Name', User."User Name");
-                    HeaderJsonObject.Add('Full Name', User."Full Name");
-                    HeaderJsonObject.Add('State', User.State);
-                    HeaderJsonObject.Add('Windows Security ID', User."Windows Security ID");
-                    HeaderJsonObject.Add('License Type', User."License Type");
-                    HeaderJsonObject.Add('Authentication Email', User."Authentication Email");
+                    HeaderJsonObject.Add('User Security ID', User."No.");
+                    HeaderJsonObject.Add('User Name', User.Name);
+                    HeaderJsonObject.Add('Full Name', User.Email);
+                    HeaderJsonObject.Add('State', User."External Id");
 
                     if HttpClient.Put(URL, HttpContent, HttpResponseMessage) then begin
                         HeaderJsonObject.WriteTo(jsonText);
@@ -107,13 +70,10 @@ codeunit 50100 "Send Updates"
                 end;
             'Post':
                 begin
-                    HeaderJsonObject.Add('User Security ID', User."User Security ID");
-                    HeaderJsonObject.Add('User Name', User."User Name");
-                    HeaderJsonObject.Add('Full Name', User."Full Name");
-                    HeaderJsonObject.Add('State', User.State);
-                    HeaderJsonObject.Add('Windows Security ID', User."Windows Security ID");
-                    HeaderJsonObject.Add('License Type', User."License Type");
-                    HeaderJsonObject.Add('Authentication Email', User."Authentication Email");
+                    HeaderJsonObject.Add('User Security ID', User."No.");
+                    HeaderJsonObject.Add('User Name', User.Name);
+                    HeaderJsonObject.Add('Full Name', User.Email);
+                    HeaderJsonObject.Add('State', User."External Id");
 
                     if HttpClient.Post(URL, HttpContent, HttpResponseMessage) then begin
                         HeaderJsonObject.WriteTo(jsonText);
@@ -136,7 +96,7 @@ codeunit 50100 "Send Updates"
                 begin
                     HttpClient.Post(URL, HttpContent, HttpResponseMessage);
                     if HttpResponseMessage.IsSuccessStatusCode then
-                    exit(ResultLbl + Format(HttpResponseMessage.IsSuccessStatusCode));
+                        exit(ResultLbl + Format(HttpResponseMessage.IsSuccessStatusCode));
                 end;
         end;
         HttpResponseMessage.Content.ReadAs(ReturnValue);

@@ -1,4 +1,4 @@
-enum 50101 "Action Enum"
+enum 50110 "Action Enum"
 {
     Caption = 'Action Enum';
     Extensible = true;

@@ -1,4 +1,4 @@
-enum 50102 "Status Enum"
+enum 50112 "Status Enum"
 {
     Caption = 'Status Enum';
     Extensible = true;

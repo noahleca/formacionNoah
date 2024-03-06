@@ -1,4 +1,4 @@
-enum 50100 "Direction Enum"
+enum 50111 "Direction Enum"
 {
     Extensible = true;
     value(0; In)

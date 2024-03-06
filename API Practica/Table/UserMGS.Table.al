@@ -21,7 +21,7 @@ table 50100 "User MGS Table"
             Caption = 'Email';
             DataClassification = CustomerContent;
         }
-        field(4; "External Id"; Code[36])
+        field(4; "External Id"; Text[36])
         {
             Caption = 'External Id';
             DataClassification = CustomerContent;
