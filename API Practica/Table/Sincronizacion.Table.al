@@ -1,4 +1,4 @@
-table 50101 "Sincronizacion Table"
+table 50112 "Sincronizacion Table"
 {
     Caption = 'Sincronizacion Table';
     DataClassification = CustomerContent;
