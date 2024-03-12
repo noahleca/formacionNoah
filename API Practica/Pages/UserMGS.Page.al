@@ -40,11 +40,11 @@ page 50100 "User MGS List"
     {
         area(Creation)
         {
-            group(Create)
+            group(Sync)
             {
                 action("Update Users")
                 {
-                    Caption = 'eEgg types.';
+                    Caption = 'Update users.';
                     ApplicationArea = All;
                     trigger OnAction()
                     var
